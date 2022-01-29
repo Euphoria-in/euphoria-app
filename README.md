@@ -1,1 +1,1 @@
-# euphoria-app
+# Euphoria-App
