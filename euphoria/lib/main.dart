@@ -19,11 +19,10 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widge t is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Euphoria App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
