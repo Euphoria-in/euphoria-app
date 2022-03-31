@@ -1,101 +1,18 @@
-import 'package:euphoria/screens/signin.dart';
-import 'package:euphoria/screens/signup.dart';
-import 'package:euphoria/screens/test_new.dart';
-import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 
+class SignUP extends StatefulWidget {
+  const SignUP({Key? key}) : super(key: key);
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(const MyApp());
+  @override
+  _SignUPState createState() => _SignUPState();
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widge t is the root of your application.
+class _SignUPState extends State<SignUP> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const HomePageWidget(),
-    );
-  }
-}
-
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({Key? key}) : super(key: key);
-
-  @override
-  _HomePageWidgetState createState() => _HomePageWidgetState();
-}
-
-class _HomePageWidgetState extends State<HomePageWidget> {
-  //   with TickerProviderStateMixin {
-  // TextEditingController textController;
-  // final scaffoldKey = GlobalKey<ScaffoldState>();
-  // final animationsMap = {
-  //   'containerOnPageLoadAnimation': AnimationInfo(
-  //     trigger: AnimationTrigger.onPageLoad,
-  //     duration: 600,
-  //     fadeIn: true,
-  //     initialState: AnimationState(
-  //       offset: Offset(0, 0),
-  //       scale: 1,
-  //       opacity: 0,
-  //     ),
-  //     finalState: AnimationState(
-  //       offset: Offset(0, 0),
-  //       scale: 1,
-  //       opacity: 1,
-  //     ),
-  //   ),
-  // };
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   startPageLoadAnimations(
-  //     animationsMap.values
-  //         .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
-  //     this,
-  //   );
-
-  //   textController = TextEditingController();
-  // }
-  // ignore: non_constant_identifier_names
-  bool vis_value = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('Flutter Demo Home Page'),
-      // ),
-
-      backgroundColor: Colors.transparent,
-      body:Signin(),
-        
-          
-     
-    );
-  }
-}
- 
-
-Widget _signup() {
-  return Visibility(
-    visible: true,
-    child: Container(
+    return Container(
       decoration: BoxDecoration(
         color: Colors.transparent,
         // image: DecorationImage(
@@ -239,7 +156,7 @@ Widget _signup() {
                               ),
                             ),
                           ),
-                          Expanded( 
+                          Expanded(
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   10, 0, 25, 10),
@@ -401,6 +318,6 @@ Widget _signup() {
               ),
             ),
           ]),
-    ),
-  );
+    );
+  }
 }
