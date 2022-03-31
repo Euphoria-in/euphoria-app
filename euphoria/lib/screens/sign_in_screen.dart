@@ -1,19 +1,74 @@
-import 'package:flutter/cupertino.dart';
+import 'package:euphoria/reusable_widgets/reusable_sign_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
-class SignUP extends StatefulWidget {
-  const SignUP({Key? key}) : super(key: key);
+
+// the code below is used to create the signin screen for the app
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({Key? key}) : super(key: key);
 
   @override
-  _SignUPState createState() => _SignUPState();
+  _SignInScreenState createState() => _SignInScreenState();
 }
 
-class _SignUPState extends State<SignUP> {
+class _SignInScreenState extends State<SignInScreen> {
+  //   with TickerProviderStateMixin {
+  // TextEditingController textController;
+  // final scaffoldKey = GlobalKey<ScaffoldState>();
+  // final animationsMap = {
+  //   'containerOnPageLoadAnimation': AnimationInfo(
+  //     trigger: AnimationTrigger.onPageLoad,
+  //     duration: 600,
+  //     fadeIn: true,
+  //     initialState: AnimationState(
+  //       offset: Offset(0, 0),
+  //       scale: 1,
+  //       opacity: 0,
+  //     ),
+  //     finalState: AnimationState(
+  //       offset: Offset(0, 0),
+  //       scale: 1,
+  //       opacity: 1,
+  //     ),
+  //   ),
+  // };
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   startPageLoadAnimations(
+  //     animationsMap.values
+  //         .where((anim) => anim.trigger == AnimationTrigger.onPageLoad),
+  //     this,
+  //   );
+
+  //   textController = TextEditingController();
+  // }
+  // ignore: non_constant_identifier_names
+  bool vis_value = false;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
+    return const Scaffold(
+      // appBar: AppBar(
+      //   title: const Text('Flutter Demo Home Page'),
+      // ),
+
+      backgroundColor: Colors.transparent,
+      body:ReusableSignInWidget(),
+        
+          
+     
+    );
+  }
+}
+ 
+
+Widget _signup() {
+  return Visibility(
+    visible: true,
+    child: Container(
+      decoration: const BoxDecoration(
         color: Colors.transparent,
         // image: DecorationImage(
         //   fit: BoxFit.cover,
@@ -156,7 +211,7 @@ class _SignUPState extends State<SignUP> {
                               ),
                             ),
                           ),
-                          Expanded(
+                          Expanded( 
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   10, 0, 25, 10),
@@ -318,6 +373,6 @@ class _SignUPState extends State<SignUP> {
               ),
             ),
           ]),
-    );
-  }
+    ),
+  );
 }

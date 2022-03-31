@@ -1,33 +1,27 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:euphoria/screens/test_new.dart';
-import 'package:expandable_bottom_sheet/expandable_bottom_sheet.dart';
+import 'package:euphoria/screens/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:lottie/lottie.dart';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_awesome_alert_box/flutter_awesome_alert_box.dart';
-import 'package:pin_input_text_field/pin_input_text_field.dart';
-import 'package:sms_autofill/sms_autofill.dart';
 import 'package:alt_sms_autofill/alt_sms_autofill.dart';
 
-class Signin extends StatefulWidget {
-  const Signin({Key? key}) : super(key: key);
+// the code below is used to create the reusable widget for the signin screen
+class ReusableSignInWidget extends StatefulWidget {
+  const ReusableSignInWidget({Key? key}) : super(key: key);
 
   @override
-  _SigninState createState() => _SigninState();
+  _ReusableSignInWidgetState createState() => _ReusableSignInWidgetState();
 }
 // ignore: non_constant_identifier_names
 
-class _SigninState extends State<Signin> {
+class _ReusableSignInWidgetState extends State<ReusableSignInWidget> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   // ignore: non_constant_identifier_names
   bool otp_call = false;
@@ -70,7 +64,7 @@ class _SigninState extends State<Signin> {
     });
   }
 
-    @override
+  @override
   void initState() {
     super.initState();
     _otpController = TextEditingController();
@@ -127,13 +121,12 @@ class _SigninState extends State<Signin> {
       //     await user!.linkWithCredential(phoneAuthCredential);
 
       setState(() {
-        
         showLoading = false;
       });
 
       if (authCredential.user != null) {
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const Gloweffect()));
+            MaterialPageRoute(builder: (context) => const HomeScreen()));
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
@@ -557,7 +550,7 @@ class _SigninState extends State<Signin> {
                                           0, 0, 15, 0),
                                       child: InkWell(
                                         onTap: () async {
-                                          // initSmsListener;  
+                                          // initSmsListener;
                                           _setText();
                                           debugPrint(otp_call.toString());
 
