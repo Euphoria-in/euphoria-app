@@ -386,6 +386,7 @@ class _ReusableSignInWidgetState extends State<ReusableSignInWidget> {
                                         ),
                                       ),
                                     ),
+                                    
                                     Padding(
                                       padding:
                                           const EdgeInsetsDirectional.fromSTEB(
