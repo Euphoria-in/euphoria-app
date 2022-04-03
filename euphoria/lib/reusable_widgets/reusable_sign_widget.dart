@@ -1,5 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:euphoria/networking/authentication.dart';
+import 'package:euphoria/reusable_widgets/reusable_social_login_button.dart';
 import 'package:euphoria/screens/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,7 @@ import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_awesome_alert_box/flutter_awesome_alert_box.dart';
 import 'package:alt_sms_autofill/alt_sms_autofill.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // the code below is used to create the reusable widget for the signin screen
 class ReusableSignInWidget extends StatefulWidget {
@@ -177,7 +180,7 @@ class _ReusableSignInWidgetState extends State<ReusableSignInWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Spacer(),
+                    const Spacer(),
                     GlassContainer(
                       blur: 2,
                       shadowStrength: 10,
@@ -384,8 +387,9 @@ class _ReusableSignInWidgetState extends State<ReusableSignInWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 15, 0),
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0, 0, 15, 0),
                                       child: InkWell(
                                         onTap: () {
                                           debugPrint(otp_call.toString());
@@ -408,7 +412,7 @@ class _ReusableSignInWidgetState extends State<ReusableSignInWidget> {
                                             num_call = true; //arrow on click
                                           });
                                         },
-                                        child: FaIcon(
+                                        child: const FaIcon(
                                           FontAwesomeIcons.arrowCircleRight,
                                           color: Colors.white,
                                           size: 30,
@@ -453,8 +457,9 @@ class _ReusableSignInWidgetState extends State<ReusableSignInWidget> {
                                     // ),
 
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 0),
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0, 0, 0, 0),
                                       child: Center(
                                         child: CountryCodePicker(
                                           onChanged: (value) {
@@ -478,12 +483,12 @@ class _ReusableSignInWidgetState extends State<ReusableSignInWidget> {
                                           // optional. aligns the flag and the Text left
                                           //  showFlagDialog: false,
                                           alignLeft: false,
-                                          dialogBackgroundColor: Color.fromARGB(
-                                              243, 255, 255, 255),
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  3, 0, 0, 0),
-                                          textStyle: TextStyle(
+                                          dialogBackgroundColor:
+                                              const Color.fromARGB(
+                                                  243, 255, 255, 255),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(3, 0, 0, 0),
+                                          textStyle: const TextStyle(
                                             fontSize: 16,
                                             color: Colors.white,
                                             //  decoration: TextDecoration.underline,
@@ -546,8 +551,9 @@ class _ReusableSignInWidgetState extends State<ReusableSignInWidget> {
                                     ),
 
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 15, 0),
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0, 0, 15, 0),
                                       child: InkWell(
                                         onTap: () async {
                                           // initSmsListener;
@@ -619,7 +625,7 @@ class _ReusableSignInWidgetState extends State<ReusableSignInWidget> {
                                           //   otp_call = true; //arrow on click
                                           // });
                                         },
-                                        child: FaIcon(
+                                        child: const FaIcon(
                                           FontAwesomeIcons.arrowCircleRight,
                                           color: Colors.white,
                                           size: 20,
@@ -631,96 +637,40 @@ class _ReusableSignInWidgetState extends State<ReusableSignInWidget> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0, 0, 0, 40),
-                            child: Container(
-                              width: 250,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                color: const Color(0x00EEEEEE),
-                                borderRadius: BorderRadius.circular(10),
-                                border: const GradientBoxBorder(
-                                  gradient: LinearGradient(colors: [
-                                    Color(0xFFFFC179),
-                                    Color(0x0ffffff1)
-                                  ]),
-                                  width: 1,
+
+                          // Button for google login
+                          ReusableSocialLoginButton(
+                            onTapFunctionality: () {
+                              // calling the function to signin the user into the app
+                              // using google and then taking the user to the home screen of the
+                              // app
+                              Authentication.signInWithGoogle().then(
+                                (value) => Navigator.of(context).pushNamed(
+                                  HomeScreen.homeScreenRoute,
                                 ),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: const [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10, 0, 3, 0),
-                                    child: FaIcon(
-                                      FontAwesomeIcons.google,
-                                      color: Colors.white,
-                                      size: 20,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        12, 0, 0, 0),
-                                    child: Text(
-                                      'continue with google',
-                                      style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Colors.white,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                              );
+                            },
+                            socialLoginButtonIcon: FontAwesomeIcons.google,
+                            socialLoginButtonName: AppLocalizations.of(context)
+                                .continueWithGoogleText,
                           ),
-                          Container(
-                            width: 250,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              color: const Color(0x00EEEEEE),
-                              borderRadius: BorderRadius.circular(10),
-                              border: const GradientBoxBorder(
-                                gradient: LinearGradient(colors: [
-                                  Color(0xFFFFC179),
-                                  Color(0x0ffffff1)
-                                ]),
-                                width: 1,
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: const [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10, 0, 3, 0),
-                                  child: FaIcon(
-                                    FontAwesomeIcons.facebook,
-                                    color: Colors.white,
-                                    size: 20,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      12, 0, 0, 0),
-                                  child: Text(
-                                    'continue with facebook',
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+
+                          // Button for facebook login
+                          ReusableSocialLoginButton(
+                            onTapFunctionality: () {
+                              Navigator.of(context).pushNamed(
+                                HomeScreen.homeScreenRoute,
+                              );
+                            },
+                            socialLoginButtonIcon: FontAwesomeIcons.facebook,
+                            socialLoginButtonName: AppLocalizations.of(context)
+                                .continueWithFacebookText,
                           ),
+
                         ]),
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     if (!iskeyboard)
                       Container(
                         height: 50,

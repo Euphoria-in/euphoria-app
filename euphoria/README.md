@@ -2,6 +2,10 @@
 
 A new Flutter project.
 
+## General Instructions
+1. Add all the colors in the app_colors.dart
+2. Add all the constants in the app_constants.dart
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

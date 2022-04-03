@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 
-// the code below is used to create the signup screen for the project
+// Sign up screen
 class SignUpScreen extends StatefulWidget {
+
+  // sign up screen route
+  static const String signupRoute = "/signupScreen";
 
   const SignUpScreen({Key? key}) : super(key: key);
 
@@ -16,12 +19,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Container(
       decoration: const BoxDecoration(
         color: Colors.transparent,
-        // image: DecorationImage(
-        //   fit: BoxFit.cover,
-        //   image: Image.asset(
-        //     'assets/images/bg.png',
-        //   ).image,
-        // ),
         shape: BoxShape.rectangle,
       ),
       child: Column(
