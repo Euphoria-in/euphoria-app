@@ -19,4 +19,11 @@ class AppConstants {
     color: Colors.white,
     fontSize: 14,
   );
+
+  // the const below is used for styling the signup screen button text
+  static const TextStyle singinScreenSignupButtonTextStyle = TextStyle(
+    fontFamily: 'Poppins',
+    color: Colors.white70,
+    fontSize: 14,
+  );
 }

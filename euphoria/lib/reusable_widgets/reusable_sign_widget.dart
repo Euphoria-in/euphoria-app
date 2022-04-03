@@ -3,6 +3,8 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:euphoria/networking/authentication.dart';
 import 'package:euphoria/reusable_widgets/reusable_social_login_button.dart';
 import 'package:euphoria/screens/home_screen.dart';
+import 'package:euphoria/screens/signup_screen.dart';
+import 'package:euphoria/utils/app_constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -386,7 +388,6 @@ class _ReusableSignInWidgetState extends State<ReusableSignInWidget> {
                                         ),
                                       ),
                                     ),
-                                    
                                     Padding(
                                       padding:
                                           const EdgeInsetsDirectional.fromSTEB(
@@ -667,46 +668,44 @@ class _ReusableSignInWidgetState extends State<ReusableSignInWidget> {
                             socialLoginButtonName: AppLocalizations.of(context)
                                 .continueWithFacebookText,
                           ),
-
                         ]),
                       ),
                     ),
                     const Spacer(),
                     if (!iskeyboard)
-                      Container(
-                        height: 50,
-                        decoration: const BoxDecoration(
-                          color: Color(0x00EEEEEE),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            Align(
-                              alignment: AlignmentDirectional(0, -0.2),
-                              child: AutoSizeText(
-                                'Don\'t  have an account yet?',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white70,
-                                  fontSize: 14,
+                      InkWell(
+                        onTap: () {
+                          // sign up screen route
+                          Navigator.of(context)
+                              .pushNamed(SignUpScreen.signupRoute);
+                        },
+                        child: Container(
+                          height: 50,
+                          decoration: const BoxDecoration(
+                            color: Color(0x00EEEEEE),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children:  [
+                              Align(
+                                alignment: const AlignmentDirectional(0, -0.2),
+                                child: AutoSizeText(
+                                  AppLocalizations.of(context).dontHaveAccountYetText,
+                                  textAlign: TextAlign.start,
+                                  style: AppConstants.singinScreenSignupButtonTextStyle,
                                 ),
                               ),
-                            ),
-                            Align(
-                              alignment: AlignmentDirectional(0, -0.2),
-                              child: AutoSizeText(
-                                ' Sign Up',
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                  fontSize: 14,
+                              Align(
+                                alignment: const AlignmentDirectional(0, -0.2),
+                                child: AutoSizeText(
+                                  AppLocalizations.of(context).signupText,
+                                  textAlign: TextAlign.start,
+                                  style: AppConstants.socialLoginButtonTextStyle,
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                   ]),

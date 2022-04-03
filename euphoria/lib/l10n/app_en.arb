@@ -1,4 +1,6 @@
 {
     "continueWithGoogleText": "continue with google",
-    "continueWithFacebookText": "continue with facebook"    
+    "continueWithFacebookText": "continue with facebook",
+    "dontHaveAccountYetText": "Don't  have an account yet?",
+    "signupText": " Sign Up"   
 }
